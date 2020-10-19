@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Recipe = ({ data }) => (
-  <div>
-    <img src={data.image} alt={data.title} />
-    <p>{data.title}</p>
-  </div>
-);
+const Recipe = ({ data, handleUpdateIndex }) => {
+  const handleClick = () => {
+    handleUpdateIndex('detail');
+  };
+
+  return (
+    <div onClick={handleClick} aria-hidden="true">
+      <img src={data.image} alt={data.title} />
+      <p>{data.title}</p>
+    </div>
+  );
+};
 
 Recipe.propTypes = {
   data: PropTypes.objectOf(
@@ -16,6 +22,7 @@ Recipe.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  handleUpdateIndex: PropTypes.func.isRequired,
 };
 
 export default Recipe;
