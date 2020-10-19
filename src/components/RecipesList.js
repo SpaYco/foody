@@ -7,7 +7,15 @@ import Recipe from './Recipe';
 class RecipesList extends React.Component {
 
   async componentDidMount() {
-    const recipes = await fetch('https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=5cbaa86b61b54ebeaf466e7cc2be0e90');
+    const { search } = this.props;
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=9243b83544ca4e598696e8738d2609f6&query=${search || ''}`);
+    const jsonRecipes = await recipes.json();
+    this.updateRecipe(jsonRecipes.results);
+  }
+
+  async componentDidUpdate() {
+    const { search } = this.props;
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=9243b83544ca4e598696e8738d2609f6&query=${search || ''}`);
     const jsonRecipes = await recipes.json();
     this.updateRecipe(jsonRecipes.results);
   }
@@ -31,7 +39,7 @@ class RecipesList extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         {this.getRecipe()}
       </div>
     );
@@ -50,7 +58,7 @@ RecipesList.propTypes = {
   updateIndex: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ recipes: state.recipes, filter: state.filter });
+const mapStateToProps = state => ({ recipes: state.recipes, search: state.search });
 
 const mapDispatchToProps = dispatch => ({
   handleRecipesSearch: Recipes => {

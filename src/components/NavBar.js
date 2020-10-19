@@ -1,10 +1,10 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 
-const NavBar = () => (
+const NavBar = ({ updateIndex, updateSearch }) => (
   <nav>
     <p>Hello World</p>
-    <SearchBar />
+    <SearchBar updateIndex={updateIndex} updateSearch={updateSearch} />
   </nav>
 );
 
