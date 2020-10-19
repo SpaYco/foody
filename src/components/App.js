@@ -4,34 +4,36 @@ import RecipesList from './RecipesList';
 import '../App.css';
 import NavBar from './NavBar';
 import RecipeDetails from './RecipeDetails';
-import { updateIndex, showData, updateSearch } from '../actions/index';
+import { updateIndex, updateData, updateSearch } from '../actions/index';
 
-function App({ location, handleUpdateIndex, handleUpdateSearch, search }) {
+function App({
+  location, handleUpdateIndex, handleUpdateSearch, details
+}) {
   if (location === 'home') {
     return (
       <div className="App">
-        <NavBar updateIndex={handleUpdateIndex} updateSearch={handleUpdateSearch}/>
+        <NavBar updateIndex={handleUpdateIndex} updateSearch={handleUpdateSearch} />
         <RecipesList updateIndex={handleUpdateIndex} />
       </div>
     );
   } if (location === 'detail') {
     return (
       <div className="App">
-        <NavBar />
-        <RecipeDetails />
+        <NavBar updateIndex={handleUpdateIndex} updateSearch={handleUpdateSearch} />
+        <RecipeDetails data={details} />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ location: state.location, search: state.search});
+const mapStateToProps = state => ({ location: state.location, details: state.details });
 
 const mapDispatchToProps = dispatch => ({
   handleUpdateIndex: data => {
     dispatch(updateIndex(data));
   },
-  handleShowData: data => {
-    dispatch(showData(data));
+  handleUpdateData: data => {
+    dispatch(updateData(data));
   },
   handleUpdateSearch: data => {
     dispatch(updateSearch(data));

@@ -1,32 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { searchRecipe } from '../actions/index';
+import { searchRecipe, updateData } from '../actions/index';
 import Recipe from './Recipe';
 
 class RecipesList extends React.Component {
-
   async componentDidMount() {
     const { search } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=9243b83544ca4e598696e8738d2609f6&query=${search || ''}`);
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=95dfa1e76ccb46e7838d6982e6517d79&query=${search}`);
     const jsonRecipes = await recipes.json();
     this.updateRecipe(jsonRecipes.results);
   }
 
-  async componentDidUpdate() {
+  async componentDidUpdate(prevProps) {
     const { search } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=9243b83544ca4e598696e8738d2609f6&query=${search || ''}`);
-    const jsonRecipes = await recipes.json();
-    this.updateRecipe(jsonRecipes.results);
+    if (prevProps.search !== search) {
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=95dfa1e76ccb46e7838d6982e6517d79&query=${search}`);
+      const jsonRecipes = await recipes.json();
+      this.updateRecipe(jsonRecipes.results);
+    }
   }
 
   getRecipe() {
-    const { recipes, updateIndex } = this.props;
+    const { recipes, updateIndex, handleUpdateData } = this.props;
     const result = [];
 
     for (let i = 0; i < recipes.length; i += 1) {
       result.push(
-        <Recipe data={recipes[i]} handleUpdateIndex={updateIndex} />,
+        <Recipe data={recipes[i]} handleUpdateIndex={updateIndex} handleUpdateData={handleUpdateData} />,
       );
     }
     return result;
@@ -56,6 +57,12 @@ RecipesList.propTypes = {
     }),
   ).isRequired,
   updateIndex: PropTypes.func.isRequired,
+  search: PropTypes.string,
+  handleUpdateData: PropTypes.func.isRequired,
+};
+
+RecipesList.defaultProps = {
+  search: 'cousous',
 };
 
 const mapStateToProps = state => ({ recipes: state.recipes, search: state.search });
@@ -63,6 +70,9 @@ const mapStateToProps = state => ({ recipes: state.recipes, search: state.search
 const mapDispatchToProps = dispatch => ({
   handleRecipesSearch: Recipes => {
     dispatch(searchRecipe(Recipes));
+  },
+  handleUpdateData: data => {
+    dispatch(updateData(data));
   },
 });
 

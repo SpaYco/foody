@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Recipe = ({ data, handleUpdateIndex }) => {
+const Recipe = ({ data, handleUpdateIndex, handleUpdateData }) => {
   const handleClick = () => {
+    handleUpdateData(data);
     handleUpdateIndex('detail');
   };
 

@@ -1,6 +1,6 @@
 export const SEARCH_RECIPE = 'SEARCH_RECIPE';
 
-export const SHOW_DETAIL = 'SHOW_DETAIL';
+export const UPDATE_DETAIL = 'UPDATE_DETAIL';
 
 export const UPDATE_INDEX = 'UPDATE_INDEX';
 
@@ -16,8 +16,8 @@ export const updateIndex = data => ({
   data,
 });
 
-export const showData = data => ({
-  type: SHOW_DETAIL,
+export const updateData = data => ({
+  type: UPDATE_DETAIL,
   data,
 });
 
