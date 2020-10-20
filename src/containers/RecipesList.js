@@ -7,7 +7,7 @@ import Recipe from '../components/Recipe';
 class RecipesList extends React.Component {
   async componentDidMount() {
     const { search, apiKey } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=${apiKey}&query=${search}`);
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=${apiKey}&query=${search}`);
     const jsonRecipes = await recipes.json();
     this.updateRecipe(jsonRecipes.results);
   }
@@ -15,7 +15,7 @@ class RecipesList extends React.Component {
   async componentDidUpdate(prevProps) {
     const { search, apiKey } = this.props;
     if (prevProps.search !== search && search !== 'couscous') {
-      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=${apiKey}&query=${search}`);
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=${apiKey}&query=${search}`);
       const jsonRecipes = await recipes.json();
       this.updateRecipe(jsonRecipes.results);
     }
@@ -68,7 +68,7 @@ RecipesList.propTypes = {
 };
 
 RecipesList.defaultProps = {
-  search: 'cousous',
+  search: 'pizza',
 };
 
 const mapStateToProps = state => ({ recipes: state.recipes, search: state.search });

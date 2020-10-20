@@ -1,6 +1,6 @@
 import { UPDATE_SEARCH } from '../actions/index';
 
-const INITIAL_STATE = 'couscous';
+const INITIAL_STATE = 'pizza';
 
 const searchReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
