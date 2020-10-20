@@ -103,3 +103,87 @@ nav p, nav a {
   font-size: 28px;
   font-weight: 800;
 }
+
+#details-section {
+  display: flex;
+  width: 100vw;
+  height: 90vh;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 4px 20px 0px black;
+  background: #192a56;
+  text-transform: capitalize;
+}
+
+#details-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #273c75;
+  height: 60%;
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+}
+
+#details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.types, .kinds {
+  display: flex;
+  flex-direction: column;
+}
+
+.types > div, .kinds > div{
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+}
+
+.detail-btns > div {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.green-checkmark {
+  background: #4cd137;
+}
+
+.red-checkmark {
+  background: #eb4d4b;
+}
+
+.green-checkmark::after {
+  content: "✔";
+  margin-left: 5px;
+}
+
+
+.red-checkmark::after {
+  content: "✖";
+  margin-left: 5px;
+}
+
+#summary {
+  background: rgba(0, 0, 0, 0.616);
+  padding: 25px;
+}
+
+#summary span {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+
+
+
