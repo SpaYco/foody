@@ -8,7 +8,7 @@ const NavBar = ({ updateIndex, updateSearch }) => {
   };
   return (
     <nav>
-      <p onClick={handleClick} aria-hidden>Foody</p>
+      <a href="/">Foody</a>
       <SearchBar updateIndex={updateIndex} updateSearch={updateSearch} />
       <a href="https://github.com/Spayco" target="_blank" rel="noopener noreferrer">By SpaYco</a>
     </nav>
