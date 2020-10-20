@@ -1,6 +1,6 @@
 import { SEARCH_RECIPE } from '../actions/index';
 
-const INITIAL_STATE = { };
+const INITIAL_STATE = [ ];
 
 const recipesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

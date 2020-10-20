@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Interweave from 'interweave';
 
-const id = window.location.pathname.split('/')[2]
+const id = window.location.pathname.split('/')[2];
 
 class RecipeDetails extends React.Component {
   constructor(props) {
@@ -13,8 +11,7 @@ class RecipeDetails extends React.Component {
   }
 
   async componentDidMount() {
-    const { data } = this.props;
-    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=5ee23a487fb74aea82f1546cd110c8cc`);
+    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=53ccf70313564c178e53e1ce165b64cd`).catch(error => error);
     const jsonRecipe = await recipe.json();
     this.setState({ details: jsonRecipe });
   }
@@ -27,12 +24,11 @@ class RecipeDetails extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
     const { details } = this.state;
     return (
       <div id="details-section">
         <div id="details-tab">
-          <img src={`https://spoonacular.com/recipeImages/${id}-636x393.jpg`} alt={data.title} />
+          <img src={`https://spoonacular.com/recipeImages/${id}-636x393.jpg`} alt={details.title} />
           <p>{details.title}</p>
         </div>
         <div id="details">
@@ -66,18 +62,4 @@ class RecipeDetails extends React.Component {
   }
 }
 
-RecipeDetails.propTypes = {
-  data: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
-
-const mapStateToProps = state => ({ data: state.details });
-
-
-
-export default connect(mapStateToProps, null)(RecipeDetails);
+export default RecipeDetails;

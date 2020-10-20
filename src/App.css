@@ -85,7 +85,7 @@ nav a {
   border-radius: 2px;
 }
 
-#list > div {
+#list > a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,9 +93,10 @@ nav a {
   background: #273c75;
   cursor: pointer;
   box-shadow: 0 0 0 0 white;
+  text-decoration: none;
 }
 
-#list > div:hover {
+#list > a:hover {
   animation-name: whiteShadow;
   animation-duration: 5s;
   animation-iteration-count: infinite;

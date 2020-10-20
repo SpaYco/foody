@@ -4,27 +4,17 @@ import PropTypes from 'prop-types';
 import { searchRecipe } from '../actions/index';
 import Recipe from '../components/Recipe';
 
+const search = window.sessionStorage.getItem('search') || 'pizza';
+
 class RecipesList extends React.Component {
   async componentDidMount() {
-    const { search } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=5ee23a487fb74aea82f1546cd110c8cc&query=${search}`);
-    const jsonRecipes = await recipes.json();
-    this.updateRecipe(jsonRecipes.results);
-  }
-
-  async componentDidUpdate(prevProps) {
-    const { search } = this.props;
-    if (prevProps.search !== search && search !== 'couscous') {
-      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=5ee23a487fb74aea82f1546cd110c8cc&query=${search}`);
-      const jsonRecipes = await recipes.json();
-      this.updateRecipe(jsonRecipes.results);
-    }
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=53ccf70313564c178e53e1ce165b64cd&query=${search}`).then(element => element.json()).catch(error => error);
+    this.updateRecipe(recipes.results);
   }
 
   getRecipe() {
     const { recipes } = this.props;
     const result = [];
-
     for (let i = 0; i < recipes.length; i += 1) {
       result.push(
         <Recipe
@@ -52,20 +42,14 @@ class RecipesList extends React.Component {
 
 RecipesList.propTypes = {
   handleRecipesSearch: PropTypes.func.isRequired,
-  recipes: PropTypes.shape({
+  recipes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     image: PropTypes.string,
     title: PropTypes.string,
     length: PropTypes.number,
-  }).isRequired,
-  search: PropTypes.string,
+  })).isRequired,
 };
-
-RecipesList.defaultProps = {
-  search: 'pizza',
-};
-
-const mapStateToProps = state => ({ recipes: state.recipes, search: state.search });
+const mapStateToProps = state => ({ recipes: state.recipes });
 
 const mapDispatchToProps = dispatch => ({
   handleRecipesSearch: Recipes => {

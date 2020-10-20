@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -10,11 +9,11 @@ class SearchBar extends React.Component {
   }
 
    handleClick = () => {
-     const { updateIndex, updateSearch } = this.props;
      const { search } = this.state;
-     updateSearch(search);
-     updateIndex('home');
+
+     window.sessionStorage.setItem('search', search);
      this.setState({ search: '' });
+     window.location.href = '/';
    };
 
    handleChange = e => {
@@ -31,10 +30,5 @@ class SearchBar extends React.Component {
      );
    }
 }
-
-SearchBar.propTypes = {
-  updateIndex: PropTypes.func.isRequired,
-  updateSearch: PropTypes.func.isRequired,
-};
 
 export default SearchBar;

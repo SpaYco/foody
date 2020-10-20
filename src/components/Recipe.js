@@ -9,13 +9,11 @@ const Recipe = ({ data }) => (
 );
 
 Recipe.propTypes = {
-  data: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Recipe;
