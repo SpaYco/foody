@@ -1,26 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Interweave from 'interweave';
 
 class RecipeDetails extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { details: {} };
   }
 
   async componentDidMount() {
     const { data } = this.props;
-    const recipe = await fetch(`https://api.spoonacular.com/recipes/${data.id}/information?apiKey=95dfa1e76ccb46e7838d6982e6517d79`);
+    const recipe = await fetch(`https://api.spoonacular.com/recipes/${data.id}/information?apiKey=ffb6df7aa88f4a07b6ba8f13ef85097f`);
     const jsonRecipe = await recipe.json();
-    this.setState(jsonRecipe);
+    this.setState({ details: jsonRecipe });
+  }
+
+  classType = arg => {
+    if (arg === true) {
+      return 'green-checkmark';
+    }
+    return 'red-checkmark';
   }
 
   render() {
     const { data } = this.props;
+    const { details } = this.state;
     return (
       <div>
-        <img src={data.image} alt={data.title} />
-        <p>{data.title}</p>
+        <div className="details-tab">
+          <img src={data.image} alt={data.title} />
+          <p>{data.title}</p>
+        </div>
+        <div>
+          <div className="types">
+            <h1>Types:</h1>
+            <div className={this.classType(details.vegetarian)}>vegetarian</div>
+            <div className={this.classType(details.vegan)}>vegan</div>
+            <div className={this.classType(details.glutenFree)}>gluten Free</div>
+            <div className={this.classType(details.dairyFree)}>dairy Free</div>
+            <div className={this.classType(details.veryHealthy)}>very Healthy</div>
+          </div>
+          <div className="kinds">
+            <h1>Kinds:</h1>
+            <div className={this.classType(details.cheap)}>cheap</div>
+            <div className={this.classType(details.veryPopular)}>very Popular</div>
+            <div className={this.classType(details.sustainable)}>sustainable</div>
+          </div>
+          <div className="summary">
+            <h1>Summary:</h1>
+            <Interweave
+              content={details.summary}
+            />
+            ;
+          </div>
+        </div>
       </div>
     );
   }
