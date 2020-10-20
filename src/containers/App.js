@@ -9,7 +9,6 @@ import { updateIndex, updateData, updateSearch } from '../actions/index';
 function App({
   location, handleUpdateIndex, handleUpdateSearch, details,
 }) {
-
   const apiKey = '82d92b6006f04945aa5cfa914b2a8821';
   if (location === 'home') {
     return (
