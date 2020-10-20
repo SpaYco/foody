@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { searchRecipe, updateData } from '../actions/index';
-import Recipe from './Recipe';
+import Recipe from '../components/Recipe';
 
 class RecipesList extends React.Component {
   async componentDidMount() {

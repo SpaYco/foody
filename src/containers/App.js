@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RecipesList from './RecipesList';
 import '../App.css';
-import NavBar from './NavBar';
-import RecipeDetails from './RecipeDetails';
+import NavBar from '../components/NavBar';
+import RecipeDetails from '../components/RecipeDetails';
 import { updateIndex, updateData, updateSearch } from '../actions/index';
 
 function App({
