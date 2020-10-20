@@ -24,6 +24,7 @@ Recipe.propTypes = {
     }),
   ).isRequired,
   handleUpdateIndex: PropTypes.func.isRequired,
+  handleUpdateData: PropTypes.func.isRequired,
 };
 
 export default Recipe;

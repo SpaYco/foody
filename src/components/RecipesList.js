@@ -6,16 +6,16 @@ import Recipe from './Recipe';
 
 class RecipesList extends React.Component {
   async componentDidMount() {
-    const { search } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ffb6df7aa88f4a07b6ba8f13ef85097f&query=${search}`);
+    const { search, apiKey } = this.props;
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=${apiKey}&query=${search}`);
     const jsonRecipes = await recipes.json();
     this.updateRecipe(jsonRecipes.results);
   }
 
   async componentDidUpdate(prevProps) {
-    const { search } = this.props;
-    if (prevProps.search !== search || search === 'couscous') {
-      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ffb6df7aa88f4a07b6ba8f13ef85097f&query=${search}`);
+    const { search, apiKey } = this.props;
+    if (prevProps.search !== search && search !== 'couscous') {
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=${apiKey}&query=${search}`);
       const jsonRecipes = await recipes.json();
       this.updateRecipe(jsonRecipes.results);
     }
@@ -28,6 +28,7 @@ class RecipesList extends React.Component {
     for (let i = 0; i < recipes.length; i += 1) {
       result.push(
         <Recipe
+          key={recipes[i].id}
           data={recipes[i]}
           handleUpdateIndex={updateIndex}
           handleUpdateData={handleUpdateData}
@@ -44,7 +45,7 @@ class RecipesList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="list">
         {this.getRecipe()}
       </div>
     );
@@ -63,6 +64,7 @@ RecipesList.propTypes = {
   updateIndex: PropTypes.func.isRequired,
   search: PropTypes.string,
   handleUpdateData: PropTypes.func.isRequired,
+  apiKey: PropTypes.string.isRequired,
 };
 
 RecipesList.defaultProps = {

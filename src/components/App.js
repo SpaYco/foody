@@ -7,20 +7,22 @@ import RecipeDetails from './RecipeDetails';
 import { updateIndex, updateData, updateSearch } from '../actions/index';
 
 function App({
-  location, handleUpdateIndex, handleUpdateSearch, details
+  location, handleUpdateIndex, handleUpdateSearch, details,
 }) {
+
+  const apiKey = '82d92b6006f04945aa5cfa914b2a8821';
   if (location === 'home') {
     return (
       <div className="App">
         <NavBar updateIndex={handleUpdateIndex} updateSearch={handleUpdateSearch} />
-        <RecipesList updateIndex={handleUpdateIndex} />
+        <RecipesList updateIndex={handleUpdateIndex} apiKey={apiKey} />
       </div>
     );
   } if (location === 'detail') {
     return (
       <div className="App">
         <NavBar updateIndex={handleUpdateIndex} updateSearch={handleUpdateSearch} />
-        <RecipeDetails data={details} />
+        <RecipeDetails data={details} apiKey={apiKey} />
       </div>
     );
   }

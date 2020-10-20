@@ -3,8 +3,9 @@ import SearchBar from './SearchBar';
 
 const NavBar = ({ updateIndex, updateSearch }) => (
   <nav>
-    <p>Hello World</p>
+    <p onClick={updateIndex('home')} aria-hidden>Foody</p>
     <SearchBar updateIndex={updateIndex} updateSearch={updateSearch} />
+    <a href="https://github.com/Spayco" target="_blank" rel="noopener noreferrer">By SpaYco</a>
   </nav>
 );
 

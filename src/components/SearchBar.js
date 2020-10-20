@@ -24,9 +24,9 @@ class SearchBar extends React.Component {
    render() {
      const { search } = this.state;
      return (
-       <div className="search">
+       <div id="search">
          <input id="search-text" type="text" onChange={this.handleChange} value={search} />
-         <input type="submit" value="&#x2315;" onClick={this.handleClick} />
+         <input id="search-btn" type="submit" value="&#x2315;" onClick={this.handleClick} />
        </div>
      );
    }

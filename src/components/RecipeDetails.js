@@ -10,8 +10,8 @@ class RecipeDetails extends React.Component {
   }
 
   async componentDidMount() {
-    const { data } = this.props;
-    const recipe = await fetch(`https://api.spoonacular.com/recipes/${data.id}/information?apiKey=ffb6df7aa88f4a07b6ba8f13ef85097f`);
+    const { data, apiKey } = this.props;
+    const recipe = await fetch(`https://api.spoonacular.com/recipes/${data.id}/information?apiKey=${apiKey}`);
     const jsonRecipe = await recipe.json();
     this.setState({ details: jsonRecipe });
   }
@@ -27,7 +27,7 @@ class RecipeDetails extends React.Component {
     const { data } = this.props;
     const { details } = this.state;
     return (
-      <div>
+      <div className="details-section">
         <div className="details-tab">
           <img src={data.image} alt={data.title} />
           <p>{data.title}</p>
@@ -68,6 +68,7 @@ RecipeDetails.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  apiKey: PropTypes.string.isRequired,
 };
 
 export default RecipeDetails;
