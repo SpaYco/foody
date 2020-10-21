@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://soon.herokuapp.com/)
+[Live Demo Link](https://spayco-foody.herokuapp.com/)
 
 
 ## Getting Started
