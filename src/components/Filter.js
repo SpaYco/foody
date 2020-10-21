@@ -17,6 +17,7 @@ const getCategories = () => {
 
 const Filter = ({ updateFilter }) => {
   const handleChange = e => {
+    window.location.href = "/"
     updateFilter(e.target.value);
   };
   return (

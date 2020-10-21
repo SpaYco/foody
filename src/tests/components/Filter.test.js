@@ -5,7 +5,7 @@ import Filter from '../../components/Filter';
 describe('Filter', () => {
   it('renders a select inputt', () => {
     const { queryAllByTestId } = render(
-      <Filter />,
+      <Filter updateFilter={() => 'mock'}/>,
     );
     const text = queryAllByTestId('categories');
     expect(text).toBeTruthy();
