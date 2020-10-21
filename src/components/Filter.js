@@ -15,14 +15,13 @@ const getCategories = () => {
   return result;
 };
 
-const Filter = ({ updateFilter }) => {
+const Filter = ({ updateFilter, filter }) => {
   const handleChange = e => {
-    window.location.href = "/"
     updateFilter(e.target.value);
   };
   return (
     <div id="search">
-      <select onChange={handleChange} data-testid="categories" name="categories" id="categories" defaultValue="Pizza">
+      <select onChange={handleChange} data-testid="categories" name="categories" id="categories" defaultValue={filter}>
         {getCategories()}
       </select>
     </div>
@@ -31,6 +30,7 @@ const Filter = ({ updateFilter }) => {
 
 Filter.propTypes = {
   updateFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 export default Filter;

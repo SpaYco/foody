@@ -8,9 +8,9 @@ import NavBar from '../components/NavBar';
 import RecipeDetails from '../components/RecipeDetails';
 import { updateFilter } from '../actions/index';
 
-const App = ({ handleFilterUpdate }) => (
+const App = ({ handleFilterUpdate, filter }) => (
   <div>
-    <NavBar updateFilter={handleFilterUpdate} />
+    <NavBar updateFilter={handleFilterUpdate} filter={filter} />
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={RecipesList} />
@@ -30,6 +30,7 @@ const mapDispatchToProps = dispatch => ({
 
 App.propTypes = {
   handleFilterUpdate: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
