@@ -8,14 +8,14 @@ class RecipesList extends React.Component {
 
   async componentDidMount() {
     const { filter } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=0c52e1a6130e4f5ea0e1ec0d479234b4&query=${filter}`).then(element => element.json()).catch(error => error);
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=70e689a206814b48ba30965399a337ae&query=${filter}`).then(element => element.json()).catch(error => error);
     this.updateRecipe(recipes.results);
   }
 
   async componentDidUpdate(prevProps) {
     const { filter } = await this.props;
     if (prevProps.filter !== filter) {
-      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=0c52e1a6130e4f5ea0e1ec0d479234b4&query=${filter}`).then(element => element.json()).catch(error => error);
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=70e689a206814b48ba30965399a337ae&query=${filter}`).then(element => element.json()).catch(error => error);
       this.updateRecipe(recipes.results);
     }
   }

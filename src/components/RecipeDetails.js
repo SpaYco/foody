@@ -11,7 +11,7 @@ class RecipeDetails extends React.Component {
   }
 
   async componentDidMount() {
-    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=0c52e1a6130e4f5ea0e1ec0d479234b4`).catch(error => error);
+    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=70e689a206814b48ba30965399a337ae`).catch(error => error);
     const jsonRecipe = await recipe.json();
     this.setState({ details: jsonRecipe });
   }
