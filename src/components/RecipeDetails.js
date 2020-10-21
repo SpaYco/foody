@@ -11,7 +11,7 @@ class RecipeDetails extends React.Component {
   }
 
   async componentDidMount() {
-    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=53ccf70313564c178e53e1ce165b64cd`).catch(error => error);
+    const recipe = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=5ee23a487fb74aea82f1546cd110c8cc`).catch(error => error);
     const jsonRecipe = await recipe.json();
     this.setState({ details: jsonRecipe });
   }
@@ -28,7 +28,7 @@ class RecipeDetails extends React.Component {
     return (
       <div id="details-section">
         <div id="details-tab">
-          <img src={`https://spoonacular.com/recipeImages/${id}-636x393.jpg`} alt={details.title} />
+          <img src={details.image} alt={details.title} />
           <p>{details.title}</p>
         </div>
         <div id="details">

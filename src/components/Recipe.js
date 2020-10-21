@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Recipe = ({ data }) => (
   <a href={`/show/${data.id}`}>
-    <img src={data.image} alt={data.title} />
+    <img data-testid="image" src={data.image} alt={data.title} />
     <p>{data.title}</p>
   </a>
 );

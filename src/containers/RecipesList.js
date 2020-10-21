@@ -8,7 +8,7 @@ const search = window.sessionStorage.getItem('search') || 'pizza';
 
 class RecipesList extends React.Component {
   async componentDidMount() {
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=53ccf70313564c178e53e1ce165b64cd&query=${search}`).then(element => element.json()).catch(error => error);
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=5ee23a487fb74aea82f1546cd110c8cc&query=${search}`).then(element => element.json()).catch(error => error);
     this.updateRecipe(recipes.results);
   }
 
