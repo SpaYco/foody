@@ -4,12 +4,20 @@ import PropTypes from 'prop-types';
 import { searchRecipe } from '../actions/index';
 import Recipe from '../components/Recipe';
 
-const search = window.sessionStorage.getItem('search') || 'pizza';
-
 class RecipesList extends React.Component {
+
   async componentDidMount() {
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=5ee23a487fb74aea82f1546cd110c8cc&query=${search}`).then(element => element.json()).catch(error => error);
+    const { filter } = this.props;
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=0c52e1a6130e4f5ea0e1ec0d479234b4&query=${filter}`).then(element => element.json()).catch(error => error);
     this.updateRecipe(recipes.results);
+  }
+
+  async componentDidUpdate(prevProps) {
+    const { filter } = await this.props;
+    if (prevProps.filter !== filter) {
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=0c52e1a6130e4f5ea0e1ec0d479234b4&query=${filter}`).then(element => element.json()).catch(error => error);
+      this.updateRecipe(recipes.results);
+    }
   }
 
   getRecipe() {
@@ -48,12 +56,13 @@ RecipesList.propTypes = {
     title: PropTypes.string,
     length: PropTypes.number,
   })).isRequired,
+  filter: PropTypes.string.isRequired,
 };
-const mapStateToProps = state => ({ recipes: state.recipes });
+const mapStateToProps = state => ({ recipes: state.recipes, filter: state.filter });
 
 const mapDispatchToProps = dispatch => ({
-  handleRecipesSearch: Recipes => {
-    dispatch(searchRecipe(Recipes));
+  handleRecipesSearch: recipes => {
+    dispatch(searchRecipe(recipes));
   },
 });
 

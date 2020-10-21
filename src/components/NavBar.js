@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import Filter from './Filter';
 
-const NavBar = () => (
+const NavBar = ({ updateFilter }) => (
   <nav>
     <a href="/">Foody</a>
-    <SearchBar />
+    <Filter updateFilter={updateFilter} />
     <a href="https://github.com/Spayco" target="_blank" rel="noopener noreferrer">By SpaYco</a>
   </nav>
 );

@@ -30,28 +30,18 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 
-#search-text {
+#search select {
   width: 50vw;
-  height: 35px;
-  color: #192a56;
-  font-size: 28px;
-  outline: none;
-  border: none;
-  border-radius: 0;
+  height: 50px;
+  font-size: 35px;
+  color: black;
 }
 
-#search-btn {
-  width: 35px;
-  height: 35px;
-  border: none;
-  font-size: 28px;
-  background: white;
-  cursor: pointer;
-  outline: none;
-  border-radius: 0;
-  color: #192a56;
+#search select option {
+  color: black;
 }
 
 #list {

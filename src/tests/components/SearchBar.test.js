@@ -1,18 +1,18 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SearchBar from '../../components/SearchBar';
+import Filter from '../../components/Filter';
 
-describe('SearchBar', () => {
+describe('Filter', () => {
   it('renders an text input', () => {
     const { queryAllByTestId } = render(
-      <SearchBar />,
+      <Filter />,
     );
     const text = queryAllByTestId('search-bar');
     expect(text).toBeTruthy();
   });
   it('renders creadit', () => {
     const { queryAllByTestId } = render(
-      <SearchBar />,
+      <Filter />,
     );
     const btn = queryAllByTestId('search-btn');
     expect(btn).toBeTruthy();
