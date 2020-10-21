@@ -7,14 +7,14 @@ import Recipe from '../components/Recipe';
 class RecipesList extends React.Component {
   async componentDidMount() {
     const { filter } = this.props;
-    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=70e689a206814b48ba30965399a337ae&query=${filter}`).then(element => element.json()).catch(error => error);
+    const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=b06964b56acb4ce2a6eb9eb97a9248d5&query=${filter}`).then(element => element.json()).catch(error => error);
     this.updateRecipe(recipes.results);
   }
 
   async componentDidUpdate(prevProps) {
     const { filter } = await this.props;
     if (prevProps.filter !== filter) {
-      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=70e689a206814b48ba30965399a337ae&query=${filter}`).then(element => element.json()).catch(error => error);
+      const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=f9e73470d29c49f197ad3b8d36743cea&query=${filter}`).then(element => element.json()).catch(error => error);
       this.updateRecipe(recipes.results);
     }
   }
