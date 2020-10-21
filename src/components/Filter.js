@@ -20,7 +20,7 @@ const Filter = ({ updateFilter }) => {
   };
   return (
     <div id="search">
-      <select onChange={handleChange} name="categories" id="categories" defaultValue="Pizza">
+      <select onChange={handleChange} data-testid="categories" name="categories" id="categories" defaultValue="Pizza">
         {getCategories()}
       </select>
     </div>
