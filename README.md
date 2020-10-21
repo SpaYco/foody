@@ -34,7 +34,7 @@
 
 ## Testing
 
-to run test, simply run `npm test`
+to run the test, simply run `npm test`
 
 ## Authors
 

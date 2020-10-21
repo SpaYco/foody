@@ -5,7 +5,6 @@ import { searchRecipe } from '../actions/index';
 import Recipe from '../components/Recipe';
 
 class RecipesList extends React.Component {
-
   async componentDidMount() {
     const { filter } = this.props;
     const recipes = await fetch(`https://api.spoonacular.com/recipes/complexSearch?number=20&apiKey=70e689a206814b48ba30965399a337ae&query=${filter}`).then(element => element.json()).catch(error => error);

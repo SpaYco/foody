@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import RecipesList from './RecipesList';
 import '../App.css';
 import NavBar from '../components/NavBar';
@@ -26,5 +27,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateFilter(filter));
   },
 });
+
+App.propTypes = {
+  handleFilterUpdate: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

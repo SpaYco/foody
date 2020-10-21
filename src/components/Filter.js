@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const categories = ['Pizza', 'Pasta', 'Spaghetti', 'Couscous', 'Noodles', 'Sauce', 'Candy'];
 
@@ -25,6 +26,10 @@ const Filter = ({ updateFilter }) => {
       </select>
     </div>
   );
+};
+
+Filter.propTypes = {
+  updateFilter: PropTypes.func.isRequired,
 };
 
 export default Filter;
