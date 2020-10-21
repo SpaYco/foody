@@ -14,6 +14,7 @@
 - React
 - redux
 - Jest
+- [Spoonacular API](https://spoonacular.com/food-api)
 
 ## Live Demo
 
