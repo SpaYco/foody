@@ -1,8 +1,10 @@
-# Calculator
+# Foody
 
-> a calculator app
+> a list of recipes of some of the most delicious food
 
-![screenshot](./screenshot.png)
+![screenshot](./assets/media/homepage.png)
+
+![screenshot](./assets/media/detail.png)
 
 ## Built With
 
@@ -10,10 +12,13 @@
 - CSS
 - JavaScript
 - React
+- redux
+- Jest
+- [Spoonacular API](https://spoonacular.com/food-api)
 
 ## Live Demo
 
-[Live Demo Link](https://spayco-react-calculator.herokuapp.com/)
+[Live Demo Link](https://spayco-foody.herokuapp.com/)
 
 
 ## Getting Started
@@ -27,6 +32,10 @@
 - if you wanna make changes do them on the src folder 
 - if you want to preview changes live use *npm start* from your terminal
 - when you finish your changes, run *npm run build* to create the production files to the dist folder
+
+## Testing
+
+to run the test, simply run `npm test`
 
 ## Authors
 
