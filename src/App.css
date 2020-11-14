@@ -1,38 +1,179 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;400;500;600;700;800;900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #192a56;
+  padding: 15px;
+  height: 10vh;
+  z-index: 8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav p,
+nav a {
+  font-size: 35px;
+  font-family: 'Sansita Swashed', cursive;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+#search select {
+  width: 50vw;
+  height: 50px;
+  font-size: 35px;
+  color: black;
+}
+
+#search select option {
+  color: black;
+}
+
+#list {
+  width: 100vw;
+  box-shadow: inset 0 4px 20px 0 black;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #192a56;
+  min-height: 90vh;
+  gap: 20px;
+}
+
+.types,
+.kinds {
+  display: flex;
+  flex-direction: column;
+}
+
+.types > div,
+.kinds > div {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+}
+
+.detail-btns > div {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+#list > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #273c75;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 white;
+  text-decoration: none;
+}
+
+#list > a:hover {
+  animation-name: whiteShadow;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes whiteShadow {
+  0% {
+    box-shadow: 0 0 0 0 white;
   }
-  to {
-    transform: rotate(360deg);
+
+  50% {
+    box-shadow: 0 0 20px 5px white;
   }
+
+  1000% {
+    box-shadow: 0 0 0 0 white;
+  }
+}
+
+#list img {
+  width: 100%;
+}
+
+#list p {
+  padding: 25px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+#details-section {
+  display: flex;
+  width: 100vw;
+  height: 90vh;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 4px 20px 0 black;
+  background: #192a56;
+  text-transform: capitalize;
+}
+
+#details-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #273c75;
+  height: 60%;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 900;
+}
+
+#details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.green-checkmark {
+  background: #4cd137;
+}
+
+.red-checkmark {
+  background: #eb4d4b;
+}
+
+.green-checkmark::after {
+  content: "✔";
+  margin-left: 5px;
+}
+
+.red-checkmark::after {
+  content: "✖";
+  margin-left: 5px;
+}
+
+#summary {
+  background: rgba(0, 0, 0, 0.616);
+  padding: 25px;
+}
+
+#summary span {
+  font-size: 25px;
+  font-weight: 300;
 }
